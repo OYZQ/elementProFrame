@@ -1,7 +1,7 @@
 <template>
   <div class="my--demo">
     <MyViewCode title="[Normal]" :source-code="sourceCode1">
-      <MyButton type="primary">查询</MyButton>
+      <MyButton type="primary">查询2</MyButton>
     </MyViewCode>
   </div>
 </template>
