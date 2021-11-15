@@ -1,28 +1,49 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Layout from '@/components/layout/index'
 
 Vue.use(VueRouter);
 
-const routes = [
+const baseRoutes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "index",
+    component: Layout,
+    redirect: '/home',
+    children:[
+      {
+        path:'home',
+        name:'home',
+        component: () => import('@/views/demo/button.vue'),
+        meta:{
+          title:'按钮案例'
+        }
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
+    path:"/demo/button",
+    name:"button",
+    component: () => import('@/views/demo/button.vue'),
+    meta: {
+      title: "按钮案例"
+    }
+  }
 ];
 
-const router = new VueRouter({
-  routes,
+const createRouter = () =>
+  new VueRouter({
+    mode: "history",
+    routes: baseRoutes,
+  });
+
+const router = createRouter();
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+    ? "前端通用框架-" + to.meta.title
+    : "前端通用框架";
+  next();
 });
 
 export default router;
