@@ -18,17 +18,17 @@ const baseRoutes = [
         meta:{
           title:'按钮案例'
         }
-      }
+      },
+      {
+        path:'demo/button',
+        name:'button',
+        component: () => import('@/views/demo/button.vue'),
+        meta:{
+          title:'按钮案例'
+        }
+      },
     ]
   },
-  {
-    path:"/demo/button",
-    name:"button",
-    component: () => import('@/views/demo/button.vue'),
-    meta: {
-      title: "按钮案例"
-    }
-  }
 ];
 
 const createRouter = () =>
