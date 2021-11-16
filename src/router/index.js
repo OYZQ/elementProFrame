@@ -9,14 +9,14 @@ const baseRoutes = [
     path: "/",
     name: "index",
     component: Layout,
-    redirect: '/home',
+    redirect: '/guide/index',
     children:[
       {
-        path:'home',
-        name:'home',
-        component: () => import('@/views/demo/button.vue'),
+        path:'guide/index',
+        name:'index',
+        component: () => import('@/views/guide/index.vue'),
         meta:{
-          title:'按钮案例'
+          title:'框架介绍'
         }
       },
       {

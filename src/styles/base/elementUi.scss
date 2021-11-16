@@ -2,8 +2,8 @@
   padding: 0 0 !important;
 }
 
-::v-deep .el-card {
-  margin: 0 10px;
+.el-card {
+  margin: 10px 0px;
 
   .el-card__header {
     padding: 16px;
@@ -12,7 +12,6 @@
       line-height: 16px;
 
       &.my-card-title {
-        float: left;
         font-size: 16px;
         color: #1F2B44;
         font-weight: bold;
