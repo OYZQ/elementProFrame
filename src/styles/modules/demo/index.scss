@@ -1,5 +1,19 @@
-.my--demo{
+.my--demo {
   width: 100%;
+  padding: 0 20px;
   background: #FAFAFA;
   display: inline-block;
+  box-sizing: border-box;
+
+  .demo-button {
+    width: 100%;
+
+    .el-row {
+      margin-bottom: 20px;
+    }
+
+    .item {
+      margin-right: 40px;
+    }
+  }
 }

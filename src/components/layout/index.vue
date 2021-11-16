@@ -17,15 +17,16 @@
           </template>
         </MySubmenu>
         <MySubmenu index="2">
-          <template slot="title">公共组件</template>
+          <template slot="title">公共元素</template>
           <template v-for="v in menus.two">
             <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
         <MyMenuItem index="3">模板页面</MyMenuItem>
+        <MyMenuItem index="4">页面模块</MyMenuItem>
       </MyMenu>
     </MyHeader>
-    <router-view></router-view>
+    <router-view class="content_main"></router-view>
   </div>
 </template>
 

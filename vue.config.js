@@ -1,5 +1,17 @@
 module.exports = {
   publicPath: '/',
+  chainWebpack(config){
+    config.module.rule('md').test(/\.md$/).use('html-loader').loader('html-loader').options({
+      minimize:{
+        collapseWhitespace:false,// 清理html中的空格、换行符
+        removeAttributeQuotes:false,// 删除引号
+      }
+    })
+    .end()
+    .use('markdown-loader')
+    .loader('markdown-loader')
+    .end()
+  },
   css: {
     loaderOptions: {
       postcss: {

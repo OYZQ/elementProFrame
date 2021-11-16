@@ -1,5 +1,5 @@
 <template>
-  <div class="my--demo">
+  <div class="myCode">
     <MyCard class="margint10">
       <div slot="header" class="clearfix">
         <span class="my-card-title">{{ title }}</span>

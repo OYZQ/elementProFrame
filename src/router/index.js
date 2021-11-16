@@ -22,7 +22,7 @@ const baseRoutes = [
       {
         path:'demo/button',
         name:'button',
-        component: () => import('@/views/demo/button.vue'),
+        component: () => import('@/views/demo/buttonDemo/button.vue'),
         meta:{
           title:'按钮案例'
         }
