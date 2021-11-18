@@ -27,6 +27,14 @@ const baseRoutes = [
           title:'按钮案例'
         }
       },
+      {
+        path:'demo/form',
+        name:'button',
+        component: () => import('@/views/demo/formDemo/form.vue'),
+        meta:{
+          title:'表单案例'
+        }
+      },
     ]
   },
 ];

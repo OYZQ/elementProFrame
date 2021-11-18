@@ -66,6 +66,7 @@ export default {
           {
             index: '2.3',
             name: '表单案例',
+            url: '/demo/form',
           },
           {
             index: '2.4',

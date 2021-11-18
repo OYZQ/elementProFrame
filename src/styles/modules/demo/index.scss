@@ -5,6 +5,16 @@
   display: inline-block;
   box-sizing: border-box;
 
+  .code-pre {
+    max-height: calc(80vh - 250px);
+    overflow: auto;
+
+  }
+  .dialog-footer{
+    text-align: center;
+    margin-top: 15px;
+  }
+
   .demo-button {
     width: 100%;
 
@@ -14,6 +24,18 @@
 
     .item {
       margin-right: 40px;
+    }
+  }
+
+  .demo-form {
+    /deep/ .el-form-item {
+      display: inline-block;
+
+      .el-form-item__content {
+        .el-input {
+          width: 200px;
+        }
+      }
     }
   }
 }

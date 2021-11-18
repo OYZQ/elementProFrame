@@ -15,9 +15,9 @@
         <pre class="code-pre" v-highlightjs="sourceCode">
           <code class="html"></code>
         </pre>
-        <span slot="footer" class="dialog-footer">
+        <div slot="footer" class="dialog-footer">
           <MyButton type="primary" @click="codeDialog = false">关闭</MyButton>
-        </span>
+        </div>
       </div>
     </MyDialog>
     <!-- 查看源码弹窗 end -->
