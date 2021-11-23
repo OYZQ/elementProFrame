@@ -24,9 +24,15 @@
         </MySubmenu>
         <MyMenuItem index="3">模板页面</MyMenuItem>
         <MyMenuItem index="4">页面模块</MyMenuItem>
+        <MySubmenu index="5">
+          <template slot="title">原生组件</template>
+          <template v-for="v in menus.five">
+            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+          </template>
+        </MySubmenu>
       </MyMenu>
     </MyHeader>
-    <router-view class="content_main"></router-view>
+    <router-view class="content_mainAll"></router-view>
   </div>
 </template>
 
@@ -119,6 +125,13 @@ export default {
           {
             index: '2.16',
             name: '穿梭框',
+          },
+        ],
+        five: [
+          {
+            index: '5.1',
+            name: '原生弹窗',
+            url: '/original/notice',
           },
         ],
       },

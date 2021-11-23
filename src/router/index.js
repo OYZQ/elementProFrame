@@ -35,6 +35,14 @@ const baseRoutes = [
           title:'表单案例'
         }
       },
+      {
+        path:'original/notice',
+        name:'notice',
+        component: () => import('@/views/original/notice/index.vue'),
+        meta:{
+          title:'弹窗组件'
+        }
+      },
     ]
   },
 ];
