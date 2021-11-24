@@ -1,11 +1,6 @@
+export default`
 <template>
-  <div class="my--demo">
-    <div class="demo-form">
-      <MyViewCode title="普通" :source-code="sourceCode1">
-        <div>
-          <mavon-editor v-model="value" />
-        </div>
-      </MyViewCode>
+  <div>
       <MyViewCode title="简约" :source-code="sourceCode2">
         <mavon-editor
           style="position:static"
@@ -19,27 +14,20 @@
           :value="value"
         />
       </MyViewCode>
-    </div>
   </div>
 </template>
 
 <script>
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import MyViewCode from '@/components/base/MyViewCode/MyViewCode'
-import sourceCode1 from './sourceCode1.js'
-import sourceCode2 from './sourceCode2.js'
 export default {
   name: 'markdownDemo',
   components: {
-    MyViewCode,
     mavonEditor,
   },
   data() {
     return {
-      sourceCode1: sourceCode1,
-      sourceCode2: sourceCode2,
-      value: `## markdown编辑测试
+      value: \`## markdown编辑测试
 ### 引入
 \`\`\`js
     // 全局注册
@@ -58,11 +46,9 @@ export default {
 \`\`\`
 [github地址](https://github.com/hinesboy/mavonEditor)
 >npm install mavon-editor --save
-`,
+\`,
     }
   },
-  methods: {},
 }
 </script>
-
-<style scoped lang="scss" src="@/styles/modules/demo/index.scss"></style>
+`
