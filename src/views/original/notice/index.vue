@@ -37,6 +37,4 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>
+<style scoped lang="scss" src="@/styles/modules/demo/index.scss"></style>
