@@ -1,3 +1,4 @@
+export default`
 <template>
   <div class="my--demo">
     <MyViewCode title="导出excel" :source-code="sourceCode1">
@@ -19,27 +20,13 @@
         </MyTable>
       </MyRow>
     </MyViewCode>
-    <MyViewCode title="导入excel" :source-code="sourceCode2">
-      <MyRow>
-        <uploadExcel :on-success="handleSuccess" :before-upload="beforeUpload"></uploadExcel>
-        <MyTable class="my-table" :data="tableData1" max-height="500">
-          <MyTableColumn v-for="item of tableHeader1" :key="item" :prop="item" :label="item" />
-        </MyTable>
-      </MyRow>
-    </MyViewCode>
   </div>
 </template>
 
 <script>
-import uploadExcel from './uploadExcel.vue'
-import MyViewCode from '@/components/base/MyViewCode/MyViewCode'
-import sourceCode1 from './sourceCode1.js'
-import sourceCode2 from './sourceCode2.js'
 export default {
   name: 'ExcelDemo',
   components: {
-    uploadExcel,
-    MyViewCode,
   },
   data() {
     return {
@@ -69,10 +56,6 @@ export default {
           address: '上海市普陀区金沙江路 1516 弄',
         },
       ],
-      tableData1: [],
-      tableHeader1: [],
-      sourceCode1:sourceCode1,
-      sourceCode2: sourceCode2,
     }
   },
   methods: {
@@ -104,26 +87,7 @@ export default {
         })
       )
     },
-    handleSuccess({ results, header }) {
-      this.tableData1 = results
-      this.tableHeader1 = header
-    },
-    beforeUpload(file) {
-      const isLt1M = file.size / 1024 / 1024 < 1
-      if (isLt1M) {
-        return true
-      }
-
-      this.$message({
-        message: '请不要上传超过1M的文件',
-        type: 'warning',
-      })
-
-      return false
-    },
   },
 }
 </script>
-
-<style>
-</style>
+`
