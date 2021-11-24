@@ -67,7 +67,8 @@ export default {
           },
           {
             index: '2.2',
-            name: 'icon案例',
+            name: 'markdown案例',
+            url: '/demo/markdown',
           },
           {
             index: '2.3',
