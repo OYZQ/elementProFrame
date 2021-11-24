@@ -85,6 +85,7 @@ export default {
           {
             index: '2.6',
             name: '导入导出',
+            url: '/demo/excel',
           },
           {
             index: '2.7',

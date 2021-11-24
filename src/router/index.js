@@ -36,6 +36,14 @@ const baseRoutes = [
         }
       },
       {
+        path:'demo/excel',
+        name:'excel',
+        component: () => import('@/views/demo/excelDemo/excel.vue'),
+        meta:{
+          title:'导入导出'
+        }
+      },
+      {
         path:'original/notice',
         name:'notice',
         component: () => import('@/views/original/notice/index.vue'),

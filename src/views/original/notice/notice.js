@@ -36,8 +36,9 @@ export default{
 
 // 第二种方式
 // import Vue from 'vue';
+
  
-// // 给Notice 添加一个创建组建实例的方法，可以动态编译自身模版并挂载
+// 给Notice 添加一个创建组建实例的方法，可以动态编译自身模版并挂载
 // function create(Component,props) {
 //     // 创建一个Vue实例
 //     const instance = new Vue({
@@ -57,5 +58,19 @@ export default{
 //     return comp;
      
 // }
-// // 暴露接口
-// export default create;
+// 暴露接口
+//export default create;
+// 另外一种的调用方法
+
+// 在你需要的组件中 引入 notice.js
+
+// import create from '@/services/create';
+
+// import BallAnim from '@/components/ballAnim.vue';  //
+//创建实例，并调用
+// const anim = create(BallAnim,{el});
+// //组件内自己的方法
+//     anim.start();
+//     anim.$on('transtioned', ()=>{
+//       anim.remove()
+//     })
