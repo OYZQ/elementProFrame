@@ -3,11 +3,11 @@
     <MyViewCode title="主题切换">
       <MyDropdown>
         <MyButton type="primary">
-          更多菜单
+          主题切换
           <i class="el-icon-arrow-down el-icon--right"></i>
         </MyButton>
         <MyDropdownMenu slot="dropdown">
-          <MyDropdownItem @click.native="theme('iview')">默认</MyDropdownItem>
+          <MyDropdownItem @click.native="theme('normal')">默认</MyDropdownItem>
           <MyDropdownItem @click.native="theme('Red')">红色</MyDropdownItem>
           <MyDropdownItem @click.native="theme('Blue')">蓝色</MyDropdownItem>
         </MyDropdownMenu>
