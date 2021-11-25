@@ -1,0 +1,28 @@
+$themes: (Red: ( //整体主色调/菜单栏背景/图标.按钮主色/悬停状态
+    mainColor: #D6000F, //主题色
+    activeMainColor: #ab343c, //页面主标题色/重要文字/弹框标题色
+    titleColor: #5f95cc, //默认字体色/二级信息字体色
+    infoColor: #545454, //菜单列表背景色
+    menuBackgroundColor:#BC485014, //
+    menuIconBackgroundColor:#bc48501f, //默认字体色/二级信息字体/标签默认色
+    divInfoColor: #929AA2, //控件不可用/禁用状态/不可点击
+    disabledColor: #EAEAEA, //边框描边颜色
+    borderColor:#EDF3FE, //整体页面背景色/图标底色/文字信息底色
+    bodyBackgroundColor:#F5F7F6, //辅助警示提示作用
+    warningColor:#E7D62C, //错误提示文字色/错误提示边框色
+    errorColor:#FF542C,
+    hoverColor:#fff, ),
+  Blue: ( //整体主色调/菜单栏背景/图标.按钮主色/悬停状态
+    mainColor: #409EFF, //菜单选中背景色/点击状态/文字,按钮按下
+    activeMainColor: #348eea, //页面主标题色/重要文字/弹框标题色
+    titleColor: #d64e18, //列表背景色
+    menuBackgroundColor:#409EFF14, //
+    menuIconBackgroundColor:#409EFF1f, //默认字体色/二级信息字体色
+    infoColor: #545454, //默认字体色/二级信息字体/标签默认色
+    divInfoColor: #929AA2, //控件不可用/禁用状态/不可点击
+    disabledColor: #EAEAEA, //边框描边颜色
+    borderColor:#EDF3FE, //整体页面背景色/图标底色/文字信息底色
+    bodyBackgroundColor:#F5F7F6, //辅助警示提示作用
+    warningColor:#E7D62C, //错误提示文字色/错误提示边框色
+    errorColor:#FF542C, hoverColor:#fff, ),
+);

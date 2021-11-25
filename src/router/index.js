@@ -50,6 +50,14 @@ const baseRoutes = [{
       }
     },
     {
+      path: '/temple/theme',
+      name: 'theme',
+      component: () => import('@/views/temple/theme/index.vue'),
+      meta: {
+        title: '主题切换'
+      }
+    },
+    {
       path: 'original/notice',
       name: 'notice',
       component: () => import('@/views/original/notice/index.vue'),

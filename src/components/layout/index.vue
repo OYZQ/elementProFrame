@@ -22,7 +22,12 @@
             <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
-        <MyMenuItem index="3">模板页面</MyMenuItem>
+        <MySubmenu index="3">
+          <template slot="title">模板页面</template>
+          <template v-for="v in menus.three">
+            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+          </template>
+        </MySubmenu>
         <MyMenuItem index="4">页面模块</MyMenuItem>
         <MySubmenu index="5">
           <template slot="title">原生组件</template>
@@ -127,6 +132,13 @@ export default {
           {
             index: '2.16',
             name: '穿梭框',
+          },
+        ],
+        three: [
+          {
+            index: '3.1',
+            name: '主题切换',
+            url: '/temple/theme',
           },
         ],
         five: [

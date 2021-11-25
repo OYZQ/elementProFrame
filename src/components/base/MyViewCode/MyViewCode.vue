@@ -3,7 +3,7 @@
     <MyCard class="margint10">
       <div slot="header" class="clearfix">
         <span class="my-card-title">{{ title }}</span>
-        <MyButton class="float-right" @click="codeDialog = true" type="text">查看源码</MyButton>
+        <MyButton v-if="sourceCode" class="float-right" @click="codeDialog = true" type="text">查看源码</MyButton>
       </div>
       <div class="text item">
         <slot />

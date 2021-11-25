@@ -44,6 +44,9 @@
           </MyFormItem>
         </MyForm>
       </MyViewCode>
+      <MyViewCode title="[下拉框]" :source-code="sourceCode1">
+        
+      </MyViewCode>
     </div>
   </div>
 </template>
