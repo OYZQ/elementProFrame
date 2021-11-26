@@ -10,7 +10,8 @@
     overflow: auto;
 
   }
-  .dialog-footer{
+
+  .dialog-footer {
     text-align: center;
     margin-top: 15px;
   }
@@ -36,6 +37,46 @@
           width: 200px;
         }
       }
+    }
+  }
+
+  /deep/.mySelect {
+    .el-select .el-tag__close.el-icon-close::before {
+      display: none;
+    }
+
+    .el-tag.el-tag--info {
+      background-color: transparent;
+      border-color: transparent;
+      color: #909399;
+    }
+
+    .el-tag.el-tag--info .el-tag__close:after {
+      content: ",";
+    }
+
+    .el-select .el-tag__close.el-icon-close {
+      background-color: transparent;
+    }
+
+    .el-select .el-tag {
+      margin: 0;
+      display: inline-block;
+    }
+
+    .el-select__tags {
+      flex-wrap: nowrap;
+      overflow: hidden;
+      margin-left: 0.5rem;
+    }
+
+    .el-tag--small {
+      padding: 0;
+    }
+
+    .el-tag .el-icon-close {
+      width: 1rem;
+      right: 0;
     }
   }
 }

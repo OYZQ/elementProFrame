@@ -2,7 +2,7 @@
   <div class="my--demo">
     <div class="demo-form">
       <MyViewCode title="[输入框]" :source-code="sourceCode1">
-        <MyForm :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="150px">
+        <MyForm :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="20rem">
           <MyFormItem label="普通输入框" prop="text1">
             <MyInput v-model="ruleForm.text1" placeholder="请输入文本"></MyInput>
           </MyFormItem>
@@ -45,7 +45,79 @@
         </MyForm>
       </MyViewCode>
       <MyViewCode title="[下拉框]" :source-code="sourceCode1">
-        
+        <MyForm :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="20rem">
+          <MyFormItem label="单选下拉框" prop="select1">
+            <MySelect v-model="ruleForm2.select1" placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="部分禁用" prop="select2">
+            <MySelect v-model="ruleForm2.select2" placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="禁用下拉框" prop="select3">
+            <MySelect v-model="ruleForm2.select3" :disabled="true" placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="必填下拉框" prop="select4">
+            <MySelect v-model="ruleForm2.select4" placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="多选下拉框1" prop="select5">
+            <MySelect v-model="ruleForm2.select5" multiple placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="多选下拉框2" prop="select6">
+            <MySelect v-model="ruleForm2.select6" collapse-tags multiple placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+          <MyFormItem label="多选下拉框3" class="mySelect" prop="select7">
+            <MySelect v-model="ruleForm2.select7" multiple placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+        </MyForm>
       </MyViewCode>
     </div>
   </div>
@@ -74,6 +146,18 @@ export default {
       rules: {
         text2: [{ required: true, message: '请输入文本', trigger: 'blur' }],
       },
+      ruleForm2: {
+        select1: '选项3',
+        select2: '选项4',
+        select3: '选项1',
+        select4: '',
+        select5: ['选项1','选项2','选项3'],
+        select6: ['选项1','选项2','选项3'],
+        select7: ['选项1','选项2','选项3'],
+      },
+      rules2: {
+        select4: [{ required: true, message: '请选择', trigger: 'change' }],
+      },
       controlConfig: {
         numcontrol_1: {
           defaultValue: 0, //默认值
@@ -85,7 +169,50 @@ export default {
           increment: 1.2, //键盘上下键增减值的刻度，默认1
         },
       },
+      options: [
+        {
+          value: '选项1',
+          label: '黄金糕',
+        },
+        {
+          value: '选项2',
+          label: '双皮奶',
+          disabled: true,
+        },
+        {
+          value: '选项3',
+          label: '蚵仔煎',
+        },
+        {
+          value: '选项4',
+          label: '龙须面',
+        },
+        {
+          value: '选项5',
+          label: '北京烤鸭',
+        },
+      ],
     }
+  },
+  mounted() {
+    // 表单1 输入框
+    this.$refs['ruleForm1'].validate((valid) => {
+      if (valid) {
+        window.console.log('valid!')
+      } else {
+        window.console.log('error submit!')
+        return false
+      }
+    })
+    // 表单2 下拉框
+    this.$refs['ruleForm2'].validate((valid) => {
+      if (valid) {
+        window.console.log('valid!')
+      } else {
+        window.console.log('error submit!')
+        return false
+      }
+    })
   },
   methods: {
     submitForm(formName) {
@@ -95,8 +222,8 @@ export default {
             message: 'submit success!',
             type: 'success',
           })
-        }else{
-          this.$message.error('submit error!');
+        } else {
+          this.$message.error('submit error!')
         }
       })
     },
