@@ -4,7 +4,9 @@
   background: #FAFAFA;
   display: inline-block;
   box-sizing: border-box;
-
+  /deep/ .el-select{
+    display: block;
+  }
   .code-pre {
     max-height: calc(80vh - 250px);
     overflow: auto;
