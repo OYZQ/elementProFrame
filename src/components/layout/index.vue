@@ -56,7 +56,7 @@ export default {
           {
             index: '1.2',
             name: '代码规范',
-            url: '/demo/button',
+            url: '/guide/standard',
           },
           {
             index: '1.3',

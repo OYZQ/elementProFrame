@@ -18,6 +18,14 @@ const baseRoutes = [{
       }
     },
     {
+      path: 'guide/standard',
+      name: 'standard',
+      component: () => import('@/views/guide/standard.vue'),
+      meta: {
+        title: '代码规范'
+      }
+    },
+    {
       path: 'demo/button',
       name: 'button',
       component: () => import('@/views/demo/buttonDemo/button.vue'),
