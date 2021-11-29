@@ -4,7 +4,14 @@ import Layout from '@/components/layout/index'
 
 Vue.use(VueRouter);
 
-const baseRoutes = [{
+const baseRoutes = [ {
+  path: "/login",
+  name: "login",
+  component: () => import('@/views/login/login.vue'),
+  meta: {
+    title: '登录'
+  }
+}, {
   path: "/",
   name: "index",
   component: Layout,
