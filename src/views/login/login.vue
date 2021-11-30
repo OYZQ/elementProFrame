@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import userInfo from '@/assets/json/userInfo.js'
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -63,9 +64,13 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          if (this.ruleForm.account === 'admin' && this.ruleForm.pass === '123') {
-            this.$store.commit("user/setToken","测试token")
-            this.$router.push({ path: '/' })
+          if (
+            this.ruleForm.account === 'admin' &&
+            this.ruleForm.pass === '123'
+          ) {
+            this.$store.dispatch('user/userinfo', userInfo).then(() => {
+              this.$router.push({ path: '/' })
+            })
           } else {
             this.$message.error('账号密码错误！')
           }

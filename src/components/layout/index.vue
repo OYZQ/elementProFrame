@@ -36,6 +36,23 @@
           </template>
         </MySubmenu>
       </MyMenu>
+      <MyPopover trigger="hover" placement="bottom-end" :offset="20">
+        <div class="account" slot="reference"></div>
+        <div class="hoverContent">
+          <div>
+            <i class="el-icon-user"></i>
+            <span>姓名：admin</span>
+          </div>
+          <div>
+            <i class="el-icon-coin"></i>
+            <span>状态：正常</span>
+          </div>
+          <div class="exit" @click="exit">
+            <i class="el-icon-bicycle"></i>
+            <span>退出</span>
+          </div>
+        </div>
+      </MyPopover>
     </MyHeader>
     <router-view class="content_mainAll"></router-view>
   </div>
@@ -160,6 +177,37 @@ export default {
         path: url,
       })
     },
+    exit() {
+      // 退出
+      this.$store.commit('user/setToken', '')
+      this.$router.push({ path: '/login' })
+    },
   },
 }
 </script>
+<style lang="scss" scoped>
+.account {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background-image: url('../../assets/img/account.jpg');
+  border-radius: 50%;
+  background-repeat: round;
+  z-index: 999;
+  cursor: pointer;
+}
+.hoverContent {
+  line-height: 24px;
+  span {
+    margin-left: 10px;
+  }
+  .exit {
+    cursor: pointer;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+}
+</style>
