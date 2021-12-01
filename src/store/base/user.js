@@ -2,11 +2,14 @@ import {
   getToken,
   setToken
 } from '@/utils/auth'
-import router from '@/router/index'
+import router,{resetRouter} from '@/router/index'
 import Layout from '@/components/layout/index'
+import userInfo from '@/assets/json/userInfo.js'
 
 const state = {
   token: getToken(), //token
+  menuList:[],
+  name:''
 }
 
 const mutations = {
@@ -14,7 +17,12 @@ const mutations = {
     state.token = token;
     setToken(token)
   },
-
+  setMenuList(state,menuList){
+    state.menuList = menuList;
+  },
+  setName(state,name){
+    state.name = name
+  }
 }
 
 const actions = {
@@ -28,6 +36,7 @@ const actions = {
         redirect: '/guide/index',
         children: []
       }]
+      resetRouter();
       asyncRoutes[0].children = menu
       router.addRoutes(asyncRoutes)
       resolve()
@@ -35,12 +44,14 @@ const actions = {
       console.log(err)
     })
   },
-  userinfo({
+  getUserinfo({
     commit,
     dispatch
-  }, obj) {
+  }) {
     return new Promise((resolve, reject) => {
       try {
+        let obj = {...userInfo};// 请求后台权限路由数据
+        commit('setMenuList' , obj.menuList);// 存储权限路由
         commit('setToken', obj.token);
         dispatch('rolesChange', obj.menuList).then(()=>{
           resolve()

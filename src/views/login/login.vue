@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import userInfo from '@/assets/json/userInfo.js'
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -68,7 +67,7 @@ export default {
             this.ruleForm.account === 'admin' &&
             this.ruleForm.pass === '123'
           ) {
-            this.$store.dispatch('user/userinfo', userInfo).then(() => {
+            this.$store.dispatch('user/getUserinfo').then(() => {
               this.$router.push({ path: '/' })
             })
           } else {
