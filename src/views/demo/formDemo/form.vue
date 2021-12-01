@@ -1,7 +1,7 @@
 <template>
   <div class="my--demo">
     <div class="demo-form">
-      <MyViewCode title="[输入框]" :source-code="sourceCode1">
+      <MyViewCode title="【输入框】" :source-code="sourceCode1">
         <MyForm :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="20rem">
           <MyFormItem label="普通输入框" prop="text1">
             <MyInput v-model="ruleForm.text1" placeholder="请输入文本"></MyInput>
@@ -44,7 +44,7 @@
           </MyFormItem>
         </MyForm>
       </MyViewCode>
-      <MyViewCode title="[下拉框]" :source-code="sourceCode1">
+      <MyViewCode title="【下拉框】" :source-code="sourceCode2">
         <MyForm :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="20rem">
           <MyFormItem label="单选下拉框" prop="select1">
             <MySelect v-model="ruleForm2.select1" placeholder="请选择">
@@ -126,7 +126,7 @@
           <MyFormItem label="树状多选" prop="select10">
             <MyScopeMulti v-model="ruleForm2.select10" multiple :data="treeData"></MyScopeMulti>
           </MyFormItem>
-          <br/>
+          <br />
           <MyFormItem label="级联选择" prop="select11">
             <MySelect
               v-for="(item,key) in selectList"
@@ -147,6 +147,71 @@
               ></MyOption>
             </MySelect>
           </MyFormItem>
+          <MyFormItem label="模糊匹配下拉框" prop="select12">
+            <MySelect v-model="ruleForm2.select12" filterable placeholder="请选择">
+              <MyOption
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></MyOption>
+            </MySelect>
+          </MyFormItem>
+        </MyForm>
+      </MyViewCode>
+      <MyViewCode title="【时间选择】" :source-code="sourceCode3">
+        <MyForm :model="ruleForm3" :rules="rules3" ref="ruleForm3" label-width="20rem">
+          <MyFormItem label="日期选择（日）" prop="date1">
+            <MyDatePicker v-model="ruleForm3.date1" type="date" placeholder="请选择"></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期选择（周）" prop="date2">
+            <MyDatePicker
+              v-model="ruleForm3.date2"
+              format="yyyy 第 WW 周"
+              type="week"
+              placeholder="请选择"
+            ></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期选择（月）" prop="date3">
+            <MyDatePicker v-model="ruleForm3.date3" type="month" placeholder="请选择"></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期选择（年）" prop="date4">
+            <MyDatePicker v-model="ruleForm3.date4" type="year" placeholder="请选择"></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期段选择" prop="date5">
+            <MyDatePicker
+              v-model="ruleForm3.date5"
+              type="daterange"
+              range-separator="~"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            ></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="指定范围日期" prop="date6">
+            <MyDatePicker
+              v-model="ruleForm3.date6"
+              type="daterange"
+              range-separator="~"
+              :picker-options="pickerOptions"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            ></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期时间段选择" prop="date7">
+            <MyDatePicker
+              v-model="ruleForm3.date7"
+              type="datetimerange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            ></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期选择（必填）" prop="date8">
+            <MyDatePicker v-model="ruleForm3.date8" type="date" placeholder="请选择"></MyDatePicker>
+          </MyFormItem>
+          <MyFormItem label="日期选择（禁用）" prop="date9">
+            <MyDatePicker :disabled="true" v-model="ruleForm3.date9" type="date" placeholder="请选择"></MyDatePicker>
+          </MyFormItem>
         </MyForm>
       </MyViewCode>
     </div>
@@ -156,6 +221,8 @@
 <script>
 import MyViewCode from '@/components/base/MyViewCode/MyViewCode'
 import sourceCode1 from './sourceCode1.js'
+import sourceCode2 from './sourceCode2.js'
+import sourceCode3 from './sourceCode3.js'
 import MyScopeMulti from '@/components/base/MyScopeMulti/MyScopeMulti'
 import treeData from '@/assets/json/treeData'
 export default {
@@ -167,6 +234,8 @@ export default {
   data() {
     return {
       sourceCode1: sourceCode1,
+      sourceCode2: sourceCode2,
+      sourceCode3: sourceCode3,
       ruleForm: {
         text1: '',
         text2: '',
@@ -190,10 +259,25 @@ export default {
         select8: '',
         select9: '',
         select10: '',
-        select11:[]
+        select11: [],
+        select12: '',
       },
       rules2: {
         select4: [{ required: true, message: '请选择', trigger: 'change' }],
+      },
+      ruleForm3: {
+        date1: '',
+        date2: '',
+        date3: '',
+        date4: '',
+        date5: '',
+        date6: '',
+        date7: '',
+        date8: '',
+        date9:''
+      },
+      rules3: {
+        date8: [{ required: true, message: '请选择', trigger: 'change' }],
       },
       controlConfig: {
         numcontrol_1: {
@@ -247,6 +331,12 @@ export default {
         ],
       ],
       position: null,
+      pickerOptions: {
+        // 日期指定范围内时间段设置
+        disabledDate(time) {
+          return time.getTime() < Date.now()
+        },
+      },
     }
   },
   mounted() {
@@ -261,6 +351,15 @@ export default {
     })
     // 表单2 下拉框
     this.$refs['ruleForm2'].validate((valid) => {
+      if (valid) {
+        window.console.log('valid!')
+      } else {
+        window.console.log('error submit!')
+        return false
+      }
+    })
+     // 表单3 日期
+    this.$refs['ruleForm3'].validate((valid) => {
       if (valid) {
         window.console.log('valid!')
       } else {
