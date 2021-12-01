@@ -89,10 +89,7 @@ export default {
 .login {
   height: 100vh;
   width: 100vw;
-  background: -webkit-linear-gradient(#93c7fc, #409eff); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#93c7fc, #409eff); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#93c7fc, #409eff); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#93c7fc, #409eff); /* 标准的语法 */
+  background-image: url('../../assets/img/pg.jpeg');
   .conent {
     width: 60vw;
     height: 70vh;
