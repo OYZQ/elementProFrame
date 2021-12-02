@@ -217,6 +217,99 @@
           </MyFormItem>
         </MyForm>
       </MyViewCode>
+      <MyViewCode title="【Tab切换】" :source-code="sourceCode4">
+        <MyRow :gutter="100">
+          <MyCol :span="12">
+            <MyTabs v-model="activeName" @tab-click="handleClick">
+              <MyTabPane label="用户管理" name="first">用户管理内容</MyTabPane>
+              <MyTabPane label="配置管理" name="second">配置管理内容</MyTabPane>
+            </MyTabs>
+          </MyCol>
+          <MyCol :span="12">
+            <MyRadioGroup class="margint15" v-model="radio" size="mini">
+              <MyRadioButton label="上海"></MyRadioButton>
+              <MyRadioButton label="北京"></MyRadioButton>
+            </MyRadioGroup>
+          </MyCol>
+        </MyRow>
+      </MyViewCode>
+      <MyViewCode title="【单选】" :source-code="sourceCode5">
+        <MyRow :gutter="100">
+          <MyCol :span="8">
+            <MyRadioGroup v-model="radio2">
+              <MyRadio :label="1">选项A</MyRadio>
+              <MyRadio :label="2">选项B</MyRadio>
+              <MyRadio :label="3" disabled>选项C</MyRadio>
+              <MyRadio :label="4">选项D</MyRadio>
+            </MyRadioGroup>
+          </MyCol>
+          <MyCol :span="8">
+            <MyRadioGroup v-model="radio4">
+              <MyRadio border :label="1">选项A</MyRadio>
+              <MyRadio border :label="2">选项B</MyRadio>
+              <MyRadio border :label="3" disabled>选项C</MyRadio>
+              <MyRadio border :label="4">选项D</MyRadio>
+            </MyRadioGroup>
+          </MyCol>
+          <MyCol :span="8">
+            <MyRadioGroup v-model="radio3">
+              <MyRadioButton label="上海"></MyRadioButton>
+              <MyRadioButton label="北京"></MyRadioButton>
+              <MyRadioButton label="广州"></MyRadioButton>
+              <MyRadioButton label="深圳"></MyRadioButton>
+            </MyRadioGroup>
+          </MyCol>
+        </MyRow>
+      </MyViewCode>
+      <MyViewCode title="【复选】" :source-code="sourceCode6">
+        <MyRow :gutter="100">
+          <MyCol :span="8">
+            <MyCheckboxGroup v-model="checkList">
+              <MyCheckbox label="复选A"></MyCheckbox>
+              <MyCheckbox label="复选B"></MyCheckbox>
+              <MyCheckbox label="复选C" disabled></MyCheckbox>
+              <MyCheckbox label="复选D" disabled></MyCheckbox>
+            </MyCheckboxGroup>
+          </MyCol>
+          <MyCol :span="8">
+            <MyCheckbox
+              :indeterminate="isIndeterminate"
+              v-model="checkAll"
+              @change="handleCheckAllChange"
+            >全选</MyCheckbox>
+            <MyCheckboxGroup v-model="checkList2" @change="handleCheckedCitiesChange">
+              <MyCheckbox v-for="city in cities" :label="city" :key="city">{{city}}</MyCheckbox>
+            </MyCheckboxGroup>
+          </MyCol>
+          <MyCol :span="8">
+            <MyCheckboxGroup v-model="checkList3" :min="1" :max="2">
+              <MyCheckbox v-for="city in cities3" :label="city" :key="city">{{city}}</MyCheckbox>
+            </MyCheckboxGroup>
+          </MyCol>
+        </MyRow>
+      </MyViewCode>
+      <MyViewCode title="【流程步骤】" :source-code="sourceCode7">
+        <MySteps :space="334" :active="1" finish-status="success">
+          <MyStep title="步骤一"></MyStep>
+          <MyStep icon="el-icon-upload" title="步骤二"></MyStep>
+          <MyStep title="步骤三"></MyStep>
+        </MySteps>
+        <MySteps :space="334" :active="1" simple finish-status="success">
+          <MyStep title="步骤一"></MyStep>
+          <MyStep title="步骤二"></MyStep>
+          <MyStep title="步骤三"></MyStep>
+        </MySteps>
+        <MySteps :space="50" :active="1" direction="vertical" finish-status="success">
+          <MyStep icon="el-icon-edit" title="步骤一"></MyStep>
+          <MyStep icon="el-icon-upload" title="步骤二"></MyStep>
+          <MyStep icon="el-icon-picture" title="步骤三"></MyStep>
+        </MySteps>
+        <MySteps :space="200" :active="1" finish-status="success">
+          <MyStep title="步骤1" description="这是一段很长的描述性文字"></MyStep>
+          <MyStep title="步骤2" description="这是一段很长很长的描述性文字"></MyStep>
+          <MyStep title="步骤3" description="这是一段很长的描述性文字"></MyStep>
+        </MySteps>
+      </MyViewCode>
     </div>
   </div>
 </template>
@@ -226,6 +319,10 @@ import MyViewCode from '@/components/base/MyViewCode/MyViewCode'
 import sourceCode1 from './sourceCode1.js'
 import sourceCode2 from './sourceCode2.js'
 import sourceCode3 from './sourceCode3.js'
+import sourceCode4 from './sourceCode4.js'
+import sourceCode5 from './sourceCode5.js'
+import sourceCode6 from './sourceCode6.js'
+import sourceCode7 from './sourceCode7.js'
 import MyScopeMulti from '@/components/base/MyScopeMulti/MyScopeMulti'
 import treeData from '@/assets/json/treeData'
 export default {
@@ -239,6 +336,10 @@ export default {
       sourceCode1: sourceCode1,
       sourceCode2: sourceCode2,
       sourceCode3: sourceCode3,
+      sourceCode4: sourceCode4,
+      sourceCode5: sourceCode5,
+      sourceCode6: sourceCode6,
+      sourceCode7: sourceCode7,
       ruleForm: {
         text1: '',
         text2: '',
@@ -277,7 +378,7 @@ export default {
         date6: '',
         date7: '',
         date8: '',
-        date9:''
+        date9: '',
       },
       rules3: {
         date8: [{ required: true, message: '请选择', trigger: 'change' }],
@@ -340,6 +441,18 @@ export default {
           return time.getTime() < Date.now()
         },
       },
+      activeName: 'second',
+      radio: '上海',
+      radio2: 2,
+      radio3: '上海',
+      radio4: 4,
+      checkList: ['复选A', '复选C'],
+      checkList2: [],
+      checkList3: ['上海'],
+      cities: ['上海', '北京', '广州', '深圳'],
+      cities3: ['上海', '最少勾选一个', '最多勾选两个', '深圳'],
+      checkAll: false,
+      isIndeterminate: false,
     }
   },
   mounted() {
@@ -361,7 +474,7 @@ export default {
         return false
       }
     })
-     // 表单3 日期
+    // 表单3 日期
     this.$refs['ruleForm3'].validate((valid) => {
       if (valid) {
         window.console.log('valid!')
@@ -411,6 +524,19 @@ export default {
         this.position + 1,
         this.ruleForm2.select11.length
       )
+    },
+    handleClick(tab, event) {
+      window.console.log(tab, event)
+    },
+    handleCheckAllChange(val) {
+      this.checkList2 = val ? [...this.cities] : []
+      this.isIndeterminate = false
+    },
+    handleCheckedCitiesChange(value) {
+      let checkedCount = value.length
+      this.checkAll = checkedCount === this.cities.length
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.cities.length
     },
   },
 }
