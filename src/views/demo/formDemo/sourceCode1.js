@@ -39,6 +39,9 @@ export default `
               <template slot="append">元</template>
             </MyInputControlNum>
           </MyFormItem>
+          <MyFormItem label="文本框" prop="text8">
+            <MyInput type="textarea" v-model="ruleForm.text8" placeholder="请输入文本"></MyInput>
+          </MyFormItem>
           <MyFormItem>
             <MyButton type="primary" @click="submitForm('ruleForm1')">提交</MyButton>
           </MyFormItem>
