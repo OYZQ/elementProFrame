@@ -136,4 +136,3 @@ export default {
   },
 }
 </script>
-<style scoped lang="scss" src="@/styles/modules/demo/index.scss"></style>

@@ -41,6 +41,14 @@ export default {
       }
     },
     {
+      path: 'demo/tableDemo',
+      name: 'button',
+      component: () => import('@/views/demo/tableDemo/table.vue'),
+      meta: {
+        title: '表格案例'
+      }
+    },
+    {
       path: 'demo/excel',
       name: 'excel',
       component: () => import('@/views/demo/excelDemo/excel.vue'),

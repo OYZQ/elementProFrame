@@ -104,6 +104,7 @@ export default {
           {
             index: '2.5',
             name: '表格案例',
+            url: '/demo/tableDemo',
           },
           {
             index: '2.6',
