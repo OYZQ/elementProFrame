@@ -309,7 +309,7 @@ export default{
     },
     changeAlign:{ // 控制树表的方向
       type: String,
-      default: 'left'
+      default: 'right'
     },
     loadData:{ // 不分页懒加载的表格数据
       type: Array,

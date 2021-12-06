@@ -12,6 +12,33 @@
           :height="250"
         ></elTable>
       </MyViewCode>
+      <MyViewCode title="【固定操作列】">
+        <elTable
+          :reqPar="request"
+          :count="24"
+          :tableData="tableData2"
+          :cols="cols2"
+          :fetch="fetch"
+          :changeEdit="true"
+          :height="250"
+        >
+          <template #btns="val">
+            <a class="tableBtn" @click="edit(val)">编辑</a>
+            <a class="tableBtn" @click="check(val)">审核</a>
+          </template>
+        </elTable>
+      </MyViewCode>
+      <MyViewCode title="【多级表格】">
+        <elTable
+          :reqPar="request"
+          :count="24"
+          :tableData="tableData2"
+          :cols="cols3"
+          :fetch="fetch"
+          :changeEdit="false"
+          :height="250"
+        ></elTable>
+      </MyViewCode>
     </div>
   </div>
 </template>
@@ -154,8 +181,45 @@ export default {
           address: '上海市普陀区金沙江路 1516 弄',
         },
       ],
-      tableData2:[],
+      tableData2: [],
       cols: [
+        {
+          prop: 'date',
+          label: '日期',
+          type: 'text',
+        },
+        {
+          prop: 'name',
+          label: '姓名',
+          type: 'text',
+        },
+        {
+          prop: 'address',
+          label: '地址',
+          type: 'text',
+        },
+      ],
+      cols2: [
+        {
+          prop: 'date',
+          label: '日期',
+          type: 'text',
+          width:'500'
+        },
+        {
+          prop: 'name',
+          label: '姓名',
+          type: 'text',
+          width:'500'
+        },
+        {
+          prop: 'address',
+          label: '地址',
+          type: 'text',
+          width:'500'
+        },
+      ],
+      cols3: [
         {
           prop: 'date',
           label: '日期',
@@ -179,8 +243,8 @@ export default {
       },
     }
   },
-  created(){
-    this.tableData2 = this.tableData.slice(0,10)
+  created() {
+    this.tableData2 = this.tableData.slice(0, 10)
   },
   methods: {
     // 页面初始化及其分页数据请求
@@ -189,7 +253,16 @@ export default {
         pageOffset,
         pageSize,
       }
-      this.tableData2 = this.tableData.slice(pageSize*(pageOffset-1),pageSize*(pageOffset-1) + pageSize)
+      this.tableData2 = this.tableData.slice(
+        pageSize * (pageOffset - 1),
+        pageSize * (pageOffset - 1) + pageSize
+      )
+    },
+    edit() {
+      this.$message('编辑')
+    },
+    check() {
+      this.$message('审核')
     },
   },
 }
