@@ -1,6 +1,6 @@
 <template>
   <!-- 递归组件实现多级表头 -->
-  <el-table-column
+  <MyTableColumn
     :prop="col.prop"
     :label="col.label"
     :width="col.width"
@@ -8,7 +8,7 @@
     :align="col.align? col.align : 'center'">
     <template v-if="col.merge">
       <!-- 此处实现递归操作 -->
-      <column-item v-for="(item, index) of col.merge" :key="item.prop + index" :col="item"></column-item>
+      <MyColumnItem v-for="(item, index) of col.merge" :key="item.prop + index" :col="item"></MyColumnItem>
     </template>
     <template slot-scope="scope">
       <!-- 普通文字的时候 -->
@@ -17,24 +17,24 @@
       </template>
       <!-- 下拉选择框的时候 -->
       <div v-if="col.type === 'select'">
-        <el-select v-if="col.filter ? col.filter(scope.row,scope.row[col.prop]): true"
+        <MySelect v-if="col.filter ? col.filter(scope.row,scope.row[col.prop]): true"
           @change="col.change && col.change(scope.row[col.prop],scope.$index,col.prop)"
           :collapse-tags="col.multiple?true:false"
           v-model="scope.row[col.prop]" :placeholder="col.place || '请选择'" :multiple="col.multiple? true : false" :clearable="true">
-          <el-option
+          <MyOption
             v-for="(itemslice1, i) in col.select"
             :key="'itemslice_' + i"
             :label="itemslice1.label || itemslice1.text"
             :value="itemslice1.value"
-          ></el-option>
-        </el-select>
+          ></MyOption>
+        </MySelect>
         <!-- 当单个表格不需要出现下拉选择的时候 -->
         <template v-else>{{ scope.row[col.prop] }}</template>
       </div>
       <!-- 输入框的时候 -->
       <div v-if="col.type === 'input'">
-        <el-input v-if="col.filter?col.filter(scope.row,scope.row[col.prop]): true" v-model="scope.row[col.prop]"
-          @blur="col.blur && col.blur(scope.row[col.prop],scope.$index,col.prop)"></el-input>
+        <MyInput v-if="col.filter?col.filter(scope.row,scope.row[col.prop]): true" v-model="scope.row[col.prop]"
+          @blur="col.blur && col.blur(scope.row[col.prop],scope.$index,col.prop)"></MyInput>
         <!-- 当单个表格不需要出现输入框的时候 -->
         <template v-else>{{ scope.row[col.prop] }}</template>
       </div>
@@ -42,7 +42,7 @@
         <slot :name="col.prop" :data="scope.row" :column="col"/>
       </template>
     </template>
-  </el-table-column>
+  </MyTableColumn>
 </template>
 
 <script>

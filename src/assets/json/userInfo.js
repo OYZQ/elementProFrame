@@ -41,11 +41,19 @@ export default {
       }
     },
     {
-      path: 'demo/tableDemo',
+      path: 'demo/table',
       name: 'button',
       component: () => import('@/views/demo/tableDemo/table.vue'),
       meta: {
         title: '表格案例'
+      }
+    },
+    {
+      path: 'demo/dialog',
+      name: 'button',
+      component: () => import('@/views/demo/dialogDemo/dialog.vue'),
+      meta: {
+        title: '弹窗案例'
       }
     },
     {

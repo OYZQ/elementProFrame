@@ -1,8 +1,8 @@
 <template>
   <div class="my--demo">
     <div class="demo-button">
-      <MyViewCode title="[Normal]" :source-code="sourceCode1">
-        <MyRow>
+      <MyViewCode title="【Normal】" :source-code="sourceCode1">
+        <MyRow class="marginb20">
           <MyButton type="primary">主要按钮</MyButton>
           <MyButton type="success">成功按钮</MyButton>
           <MyButton type="info">信息按钮</MyButton>
@@ -30,7 +30,7 @@
           <MyButton type="danger" icon="el-icon-delete" circle></MyButton>
         </MyRow>
       </MyViewCode>
-      <MyViewCode title="Disabled" :source-code="sourceCode2">
+      <MyViewCode title="【Disabled】" :source-code="sourceCode2">
         <MyRow>
           <MyButton type="primary" disabled>主要按钮</MyButton>
           <MyButton type="success" disabled>成功按钮</MyButton>
@@ -44,11 +44,11 @@
           <MyButton type="danger" plain disabled>危险按钮</MyButton>
         </MyRow>
       </MyViewCode>
-      <MyViewCode title="文字按钮" :source-code="sourceCode3">
+      <MyViewCode title="【文字按钮】" :source-code="sourceCode3">
         <MyButton type="text" icon="el-icon-document">文字按钮</MyButton>
         <MyButton type="text" icon="el-icon-document" disabled>文字按钮</MyButton>
       </MyViewCode>
-      <MyViewCode title="下拉按钮" :source-code="sourceCode4">
+      <MyViewCode title="【下拉按钮】" :source-code="sourceCode4">
         <MyDropdown>
           <span class="el-dropdown-link">
             下拉菜单
@@ -63,7 +63,7 @@
           </MyDropdownMenu>
         </MyDropdown>
       </MyViewCode>
-      <MyViewCode title="下拉按钮（点击事件）" :source-code="sourceCode5">
+      <MyViewCode title="【下拉按钮（点击事件）】" :source-code="sourceCode5">
         <MyDropdown @command="handleDropDown">
           <MyButton class="el-dropdown-link">
             下拉菜单
@@ -78,7 +78,7 @@
           </MyDropdownMenu>
         </MyDropdown>
       </MyViewCode>
-      <MyViewCode title="Badge标记" :source-code="sourceCode6">
+      <MyViewCode title="【Badge标记】" :source-code="sourceCode6">
         <MyBadge :value="12" class="item">
           <MyButton size="small">评论</MyButton>
         </MyBadge>
@@ -136,3 +136,8 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.el-badge.item {
+    margin-right: 30px;
+}
+</style>

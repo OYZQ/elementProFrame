@@ -2,9 +2,10 @@
   <div>
     <MyHeader>
       <MyMenu
-        :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
+        :default-active="$route.path"
+        router
         @select="handleSelect"
         background-color="#545c64"
         text-color="#fff"
@@ -13,26 +14,26 @@
         <MySubmenu index="1">
           <template slot="title">使用指南</template>
           <template v-for="v in menus.one">
-            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+            <MyMenuItem :key="v.index" :index="v.index">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
         <MySubmenu index="2">
           <template slot="title">公共元素</template>
           <template v-for="v in menus.two">
-            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+            <MyMenuItem :key="v.index" :index="v.index">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
         <MySubmenu index="3">
           <template slot="title">模板页面</template>
           <template v-for="v in menus.three">
-            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+            <MyMenuItem :key="v.index" :index="v.index">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
         <MyMenuItem index="4">页面模块</MyMenuItem>
         <MySubmenu index="5">
           <template slot="title">原生组件</template>
           <template v-for="v in menus.five">
-            <MyMenuItem :key="v.index" :index="v.index" @click="openPage(v.url)">{{ v.name }}</MyMenuItem>
+            <MyMenuItem :key="v.index" :index="v.index">{{ v.name }}</MyMenuItem>
           </template>
         </MySubmenu>
       </MyMenu>
@@ -62,52 +63,52 @@
 export default {
   data() {
     return {
-      activeIndex: '1.1',
+      activeIndex: '/guide/index',
       menus: {
         one: [
           {
-            index: '1.1',
+            index: '/guide/index',
             name: '框架介绍',
             url: '/guide/index',
           },
           {
-            index: '1.2',
+            index: '/guide/standard',
             name: '代码规范',
             url: '/guide/standard',
           },
           {
-            index: '1.3',
+            index: '',
             name: '日志',
-            url: '/demo/button',
           },
         ],
         two: [
           {
-            index: '2.1',
+            index: '/demo/button',
             name: '按钮案例',
             url: '/demo/button',
           },
           {
-            index: '2.2',
+            index: '/demo/markdown',
             name: 'markdown案例',
             url: '/demo/markdown',
           },
           {
-            index: '2.3',
+            index: '/demo/form',
             name: '表单案例',
             url: '/demo/form',
           },
           {
-            index: '2.4',
+            index: '/demo/dialog',
             name: '弹窗案例',
+            url: '/demo/dialog',
           },
           {
-            index: '2.5',
+            index: '/demo/table',
             name: '表格案例',
-            url: '/demo/tableDemo',
+            url: '/demo/table',
           },
           {
-            index: '2.6',
+            index: '/demo/excel',
             name: '导入导出',
             url: '/demo/excel',
           },
@@ -154,14 +155,14 @@ export default {
         ],
         three: [
           {
-            index: '3.1',
+            index: '/temple/theme',
             name: '主题切换',
             url: '/temple/theme',
           },
         ],
         five: [
           {
-            index: '5.1',
+            index: '/original/notice',
             name: '原生弹窗',
             url: '/original/notice',
           },
@@ -172,11 +173,6 @@ export default {
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath)
-    },
-    openPage(url) {
-      this.$router.push({
-        path: url,
-      })
     },
     exit() {
       // 退出

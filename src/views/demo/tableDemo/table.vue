@@ -1,7 +1,7 @@
   <template>
   <div class="my--demo">
     <div class="demo-table">
-      <MyViewCode title="【普通表格】">
+      <MyViewCode title="【普通表格】" :source-code="sourceCode1">
         <elTable
           :reqPar="request"
           :count="24"
@@ -12,7 +12,7 @@
           :height="250"
         ></elTable>
       </MyViewCode>
-      <MyViewCode title="【固定操作列】">
+      <MyViewCode title="【固定操作列】" :source-code="sourceCode2">
         <elTable
           :reqPar="request"
           :count="24"
@@ -28,7 +28,7 @@
           </template>
         </elTable>
       </MyViewCode>
-      <MyViewCode title="【多级表格】">
+      <MyViewCode title="【多级表格】" :source-code="sourceCode3">
         <elTable
           :reqPar="request"
           :count="24"
@@ -46,6 +46,9 @@
 <script>
 import elTable from '@/components/base/MyTable/elTable'
 import MyViewCode from '@/components/base/MyViewCode/MyViewCode'
+import sourceCode1 from './sourceCode1'
+import sourceCode2 from './sourceCode2'
+import sourceCode3 from './sourceCode3'
 export default {
   name: 'tabelDemo',
   components: {
@@ -54,6 +57,9 @@ export default {
   },
   data() {
     return {
+      sourceCode1:sourceCode1,
+      sourceCode2:sourceCode2,
+      sourceCode3:sourceCode3,
       tableData: [
         {
           date: '2016-05-02',
@@ -204,19 +210,19 @@ export default {
           prop: 'date',
           label: '日期',
           type: 'text',
-          width:'500'
+          width: '500',
         },
         {
           prop: 'name',
           label: '姓名',
           type: 'text',
-          width:'500'
+          width: '500',
         },
         {
           prop: 'address',
           label: '地址',
           type: 'text',
-          width:'500'
+          width: '500',
         },
       ],
       cols3: [
@@ -231,9 +237,20 @@ export default {
           type: 'text',
         },
         {
-          prop: 'address',
           label: '地址',
-          type: 'text',
+          type: 'merge',
+          merge: [
+            {
+              prop: 'address',
+              label: '地址1',
+              type: 'text',
+            },
+            {
+              prop: 'address',
+              label: '地址2',
+              type: 'text',
+            },
+          ],
         },
       ],
       // 分页数据
