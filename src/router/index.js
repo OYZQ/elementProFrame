@@ -4,17 +4,28 @@ import store from '@/store'
 import {
   getToken,
 } from "../utils/auth";
+// 报错页面
+import error from './error/index'
 
 Vue.use(VueRouter);
 
 let baseRoutes = [{
-  path: "/login",
-  name: "login",
-  component: () => import('@/views/login/login.vue'),
-  meta: {
-    title: '登录'
-  }
-}];
+    path: "/login",
+    name: "login",
+    component: () => import('@/views/login/login.vue'),
+    meta: {
+      title: '登录'
+    }
+  },
+  ...error,
+  {
+    path: '*', // 页面不存在的情况下会跳到404页面
+    redirect: '/error/404',
+    meta: {
+      name: 'notFound',
+    }
+  },
+];
 
 const createRouter = () =>
   new VueRouter({
@@ -25,7 +36,7 @@ const createRouter = () =>
 const router = createRouter();
 
 // 重置路由：用于切换用户后重置路由
-export function resetRouter(){
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
