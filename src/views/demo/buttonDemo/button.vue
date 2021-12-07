@@ -2,7 +2,7 @@
   <div class="my--demo">
     <div class="demo-button">
       <MyViewCode title="【Normal】" :source-code="sourceCode1">
-        <MyRow class="marginb20">
+        <MyRow>
           <MyButton type="primary">主要按钮</MyButton>
           <MyButton type="success">成功按钮</MyButton>
           <MyButton type="info">信息按钮</MyButton>
@@ -136,8 +136,4 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.el-badge.item {
-    margin-right: 30px;
-}
-</style>
+<style scoped lang="scss" src="@/styles/modules/demo/index.scss"></style>

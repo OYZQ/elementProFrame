@@ -1,0 +1,119 @@
+/**
+* el-dialog start
+*/
+el.dialog {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  border-radius: 2px;
+
+  .el-dialog__header {
+    height: 14px;
+    line-height: 14px;
+    padding: 14px 14px 12px 20px;
+
+    .el-dialog__title {
+      float: left;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 14px;
+      color: #555;
+    }
+
+    .el-dialog__headerbtn {
+      top: -0.2rem;
+      right: 0;
+      padding: 14px 14px 12px;
+      font-size: 14px !important;
+      line-height: 14px;
+      width: 46px;
+      height: 44px;
+
+      .el-dialog__close {
+        font-size: 18px !important;
+        margin: -6px 0 0 -6px;
+        color: #9b9b9b;
+
+        &:hover {
+          color: #287eff;
+        }
+      }
+    }
+  }
+
+  .el-dialog__body {
+    padding: 0px 20px;
+  }
+
+  .el-dialog__footer {
+    text-align: center;
+  }
+}
+
+/**
+* el-dialog end
+*/
+
+/**
+* el-popover statr
+*/
+.el-popover {
+  box-shadow: 0 2px 8px 0 rgba(31, 43, 68, 0.15);
+  border-radius: 4px;
+  padding: 0;
+
+  .el-popover__title {
+    font-size: 14px;
+    line-height: 14px;
+    color: #555;
+    padding: 14px 14px 12px 20px;
+  }
+
+  .el-popover-content {
+    font-size: 13px;
+    padding: 12px;
+    color: #333;
+    line-height: 20px;
+  }
+
+  .tip-footer {
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/**
+* el-popover end
+*/
+
+/**
+* el-popcomform start
+*/
+
+.popComform {
+  .popover-content {
+    font-size: 13px;
+    color: #445c86;
+    text-align: left;
+    line-height: 20px;
+
+    .el-icon-warning {
+      font-size: 14px;
+      color: #ffad00;
+      margin-right: 4px;
+    }
+  }
+
+  .tip-footer {
+    padding: 4px 12px 12px;
+    text-align: right;
+    .el-button{
+      width: 46px;
+      height: 24px;
+      line-height: 22px;
+      padding: 0;
+      min-width: 46px;
+    }
+  }
+}
+/**
+* el-popcomform end
+*/

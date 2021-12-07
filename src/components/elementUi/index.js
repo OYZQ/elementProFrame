@@ -79,6 +79,7 @@ import {
   MessageBox,
   Message,
   Notification,
+  Drawer
 } from "element-ui";
 
 Vue.component("MyPagination", Pagination);
@@ -154,6 +155,7 @@ Vue.component("MyCalendar", Calendar);
 Vue.component("MyBacktop", Backtop);
 Vue.component("MyPageHeader", PageHeader);
 Vue.component("MyCascaderPanel", CascaderPanel);
+Vue.component("MyDrawer", Drawer);
 
 Vue.use(Loading.directive);
 
